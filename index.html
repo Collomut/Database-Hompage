@@ -1,1 +1,353 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Express Login</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/i/css/core.css" type="text/css" />
+  <link rel="stylesheet" href="/i/css/htmldb_V2.css" type="text/css" />
+  <style>
+    html, body {
+      height: 100%;
+      min-height: 100%;
+    }
+    body {
+      background: linear-gradient(135deg, #e0e7ff 0%, #f3f4f6 100%);
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #22223b;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-container {
+      width: 100%;
+      max-width: 410px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(60, 72, 88, 0.18);
+      padding: 2.5rem 2rem 2rem 2rem;
+      position: relative;
+      z-index: 2;
+      transition: background 0.3s, color 0.3s;
+      box-sizing: border-box;
+      min-width: 320px;
+    }
+    #htmldbLogo2 img {
+      display: block;
+      margin: 0 auto 1.5rem auto;
+      max-width: 80%;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(60, 72, 88, 0.08);
+    }
+    .login-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #3b5bdb;
+      margin-bottom: 1.2rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+    .login-desc {
+      text-align: center;
+      color: #6c757d;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: #495057;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+      margin-left: 2px;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      margin-bottom: 1.2rem;
+      border: 1.5px solid #b6b6d6;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      background: #f8fafc;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.3s, color 0.3s;
+      outline: none;
+      color: #22223b;
+      box-sizing: border-box;
+      display: block;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #3b5bdb;
+      box-shadow: 0 0 0 2px #a5b4fc55;
+      background: #fff;
+    }
+    input[type="button"] {
+      width: 100%;
+      padding: 0.8rem;
+      background: linear-gradient(90deg, #3b5bdb 60%, #4f8cff 100%);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(60, 72, 88, 0.10);
+      letter-spacing: 0.5px;
+    }
+    input[type="button"]:hover {
+      background: linear-gradient(90deg, #4f8cff 0%, #3b5bdb 100%);
+      box-shadow: 0 4px 16px rgba(60, 72, 88, 0.13);
+    }
+    .htmldbNotification {
+      background: #ffe3e3;
+      color: #c92a2a;
+      border: 1px solid #ffa8a8;
+      border-radius: 7px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1.2rem;
+      text-align: center;
+      font-size: 1rem;
+      transition: background 0.3s, color 0.3s;
+    }
+    .links-list {
+      margin-top: 1.2rem;
+      padding-left: 0;
+      list-style: none;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+    }
+    .links-list li {
+      display: inline-block;
+      margin: 0;
+    }
+    .links-list a {
+      color: #3b5bdb;
+      text-decoration: none;
+      font-size: 0.98rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      transition: color 0.2s, background 0.2s;
+      background: #f3f4f6;
+      display: inline-block;
+    }
+    .links-list a:hover {
+      color: #fff;
+      background: #3b5bdb;
+      text-decoration: none;
+    }
+    .htmldbNewBottom {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #adb5bd;
+      margin-top: 2.2rem;
+      transition: color 0.3s;
+      padding-bottom: 0.5rem;
+    }
+    /* Dark mode styles */
+    body.dark-mode {
+      background: linear-gradient(135deg, #232946 0%, #121629 100%);
+      color: #f4f4f4;
+    }
+    .dark-mode .login-container {
+      background: #232946;
+      color: #f4f4f4;
+      box-shadow: 0 8px 32px rgba(20, 20, 40, 0.28);
+    }
+    .dark-mode .login-title {
+      color: #a5b4fc;
+    }
+    .dark-mode .login-desc {
+      color: #b8c1ec;
+    }
+    .dark-mode label {
+      color: #e0e7ff;
+    }
+    .dark-mode input[type="text"],
+    .dark-mode input[type="password"] {
+      background: #181a2a;
+      color: #f4f4f4;
+      border-color: #3b5bdb;
+    }
+    .dark-mode input[type="text"]:focus,
+    .dark-mode input[type="password"]:focus {
+      background: #232946;
+      border-color: #a5b4fc;
+    }
+    .dark-mode input[type="button"] {
+      background: linear-gradient(90deg, #232946 60%, #3b5bdb 100%);
+      color: #fff;
+    }
+    .dark-mode .htmldbNotification {
+      background: #232946;
+      color: #ffb4b4;
+      border-color: #ffb4b4;
+    }
+    .dark-mode .links-list a {
+      color: #a5b4fc;
+      background: #232946;
+    }
+    .dark-mode .links-list a:hover {
+      color: #232946;
+      background: #a5b4fc;
+    }
+    .dark-mode .htmldbNewBottom {
+      color: #b8c1ec;
+    }
+    @media (max-width: 500px) {
+      .login-container {
+        padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+        max-width: 98vw;
+        min-width: unset;
+      }
+      #htmldbLogo2 img {
+        max-width: 95%;
+      }
+      .links-list {
+        gap: 0.3rem;
+      }
+    }
+    .toggle-mode-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: #f8fafc;
+      border: none;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(60, 72, 88, 0.10);
+      transition: background 0.3s;
+      z-index: 10;
+    }
+    .toggle-mode-btn:hover {
+      background: #e0e7ff;
+    }
+    .toggle-mode-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: #3b5bdb;
+      transition: fill 0.3s;
+    }
+    #moonIcon {
+      display: none;
+    }
+    .dark-mode .toggle-mode-btn {
+      background: #232946;
+    }
+    .dark-mode .toggle-mode-btn svg {
+      fill: #a5b4fc;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <!-- Toggle Button -->
+    <button class="toggle-mode-btn" id="toggleModeBtn" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+      <svg id="sunIcon" viewBox="0 0 24 24" style="display:block;"><circle cx="12" cy="12" r="5"/><g><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
+      <svg id="moonIcon" viewBox="0 0 24 24" style="display:none;"><path d="M21 12.79A9 9 0 0112.21 3a7 7 0 100 14A9 9 0 0121 12.79z"/></svg>
+    </button>
+    <div id="htmldbLogo2">
+      <img src="/i/htmldb/oracle_xe_logo.gif" width="300" height="30" alt="Application Express" />
+    </div>
+    <div class="login-title">Database Login</div>
+    <div class="login-desc">Enter your database username and password.</div>
+    <noscript>
+      <div class="htmldbNotification">This application requires JavaScript to be enabled.</div>
+    </noscript>
+    <div class="htmldbNotification" id="CookieTest" style="display:none;">This application requires cookies to be enabled.</div>
+    <form action="wwv_flow.accept" method="post" name="wwv_flow" id="wwvFlowForm" autocomplete="off">
+      <input type="hidden" name="p_flow_id" value="4550" id="pFlowId" />
+      <input type="hidden" name="p_flow_step_id" value="11" id="pFlowStepId" />
+      <input type="hidden" name="p_instance" value="1163847002583420" id="pInstance" />
+      <input type="hidden" name="p_page_submission_id" value="7569" id="pPageSubmissionId" />
+      <input type="hidden" name="p_request" value="" id="pRequest" />
+      <label for="P11_USERNAME">Username</label>
+      <input type="text" name="p_t01" maxlength="2000" id="P11_USERNAME" tabindex="2" required>
+      <label for="P11_PASSWORD">Password</label>
+      <input type="password" name="p_t02" maxlength="2000" onkeypress="return submitEnter(this,event)" id="P11_PASSWORD" tabindex="3" required>
+      <input type="button" value="Login" onclick="this.disabled=true; doSubmit('LOGIN');" id="LOGIN" tabindex="4">
+      <ul class="links-list">
+        <li><a href="#">License Agreement</a></li>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Forum Registration</a></li>
+        <li><a href="#">Discussion Forum</a></li>
+        <li><a href="#">Product Page</a></li>
+      </ul>
+    </form>
+    <div class="htmldbNewBottom">
+      Language: en-us<br>
+      <span style="font-size:0.85em;">&copy; 1999, 2006, Oracle. All rights reserved.</span>
+    </div>
+  </div>
+  <script type="text/javascript">
+    function pg11_CheckCookie() {
+      document.cookie = 'ISCOOKIE=true';
+      var flow = document.cookie.indexOf('ISCOOKIE=true') !== -1;
+      if (!flow) {
+        document.getElementById('CookieTest').style.display = '';
+      }
+    }
+    function first_field(id) {
+      var el = document.getElementById(id || 'P11_USERNAME');
+      if (el) el.focus();
+    }
+    function submitEnter(field, event) {
+      var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+      if (keyCode == 13) {
+        document.getElementById('LOGIN').click();
+        return false;
+      }
+      return true;
+    }
+    function doSubmit(action) {
+      document.getElementById('wwvFlowForm').submit();
+    }
 
+    // Dark/Light mode toggle logic
+    const toggleBtn = document.getElementById('toggleModeBtn');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    function setMode(isDark) {
+      if (isDark) {
+        document.body.classList.add('dark-mode');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+        localStorage.setItem('db_dark_mode', '1');
+      } else {
+        document.body.classList.remove('dark-mode');
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+        localStorage.setItem('db_dark_mode', '0');
+      }
+    }
+    toggleBtn.addEventListener('click', function() {
+      setMode(!document.body.classList.contains('dark-mode'));
+    });
+    window.onload = function() {
+      first_field('P11_USERNAME');
+      pg11_CheckCookie();
+      const darkMode = localStorage.getItem('db_dark_mode') === '1';
+      setMode(darkMode);
+    }
+  </script>
+</body>
+</html>
