@@ -158,7 +158,7 @@
       transition: color 0.3s;
       padding-bottom: 0.5rem;
     }
-    /* Dark mode styles */
+    
     body.dark-mode {
       background: linear-gradient(135deg, #232946 0%, #121629 100%);
       color: #f4f4f4;
@@ -260,7 +260,7 @@
 </head>
 <body>
   <div class="login-container">
-    <!-- Toggle Button -->
+    
     <button class="toggle-mode-btn" id="toggleModeBtn" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">
       <svg id="sunIcon" viewBox="0 0 24 24" style="display:block;"><circle cx="12" cy="12" r="5"/><g><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
       <svg id="moonIcon" viewBox="0 0 24 24" style="display:none;"><path d="M21 12.79A9 9 0 0112.21 3a7 7 0 100 14A9 9 0 0121 12.79z"/></svg>
@@ -322,7 +322,7 @@
       document.getElementById('wwvFlowForm').submit();
     }
 
-    // Dark/Light mode toggle logic
+    
     const toggleBtn = document.getElementById('toggleModeBtn');
     const sunIcon = document.getElementById('sunIcon');
     const moonIcon = document.getElementById('moonIcon');
